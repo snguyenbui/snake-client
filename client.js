@@ -1,5 +1,8 @@
 const net = require('net');
-
+/**
+ * connects to the server and creates a socket object conn
+ * @returns socket object conn
+ */
 const connect = () => {
   const conn = net.createConnection({
     host: 'localhost',
