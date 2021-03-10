@@ -37,6 +37,26 @@ const handleUserInput = (key) => {
   if (key === 'd') {
     connection.write("Move: right");
   }
+
+  if (key === 't') {
+    connection.write("Say: I'm using tilt controls");
+  }
+
+  if (key === 'b') {
+    connection.write("Say: Bees?");
+  }
+
+  if (key === 'q') {
+    connection.write("Say: It's High Noon");
+  }
+
+  if (key === 'y') {
+    connection.write("Say: Y u heff 2 b med");
+  }
+  
+  if (key === 'i') {
+    connection.write("Say: iz only gaem");
+  }
 };
 
 module.exports = setupInput;
