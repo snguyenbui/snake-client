@@ -16,7 +16,7 @@ const connect = () => {
     conn.write("Name: SUN");
     // conn.write("Move: up")
     // setInterval(() => {
-    //   conn.write("Move: left") 
+    //   conn.write("Move: left")
     // }, 50);
   });
 
