@@ -1,6 +1,8 @@
 // Stores the active TCP connection object.
 let connection;
 
+let direction = "left";
+
 /**
  * Setup User Interface
  * Specifically, so that we can handle user input via stdin
@@ -13,29 +15,46 @@ const setupInput = (conn) => {
   stdin.on("data", (key) => {
     handleUserInput(key);
   });
+  setInterval(() => { 
+    sendMove();
+    }, 100);
   stdin.resume();
   return stdin;
 };
 
+const sendMove = () => {
+  if (direction === "up"){
+    connection.write("Move: up");
+  }
+  if (direction === "down"){
+    connection.write("Move: down");
+  }
+  if (direction === "left"){
+    connection.write("Move: left");
+  }
+  if (direction === "right"){
+    connection.write("Move: right");
+  }
+}
 const handleUserInput = (key) => {
   if (key === '\u0003') {
     process.exit();
   }
   
-  if (key === 'w') {
-    connection.write("Move: up");
+  if (key === 'w' && direction !== "down") {
+    direction = "up";
   }
 
-  if (key === 's') {
-    connection.write("Move: down");
+  if (key === 's' && direction !== "up") {
+    direction = "down";
   }
 
-  if (key === 'a') {
-    connection.write("Move: left");
+  if (key === 'a' && direction !== "right") {
+    direction = "left";
   }
 
-  if (key === 'd') {
-    connection.write("Move: right");
+  if (key === 'd' && direction !== "left") {
+    direction = "right";
   }
 
   if (key === 't') {
